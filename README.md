@@ -1,60 +1,106 @@
-# Azure SRE Toolkit 
-A collection of Azure-focused automation tools, troubleshooting utilities, operational runbooks, and cloud engineering scripts developed from real-world DevOps and Site Reliability Engineering (SRE) scenarios.
- 
-## Purpose 
-This repository contains solutions designed to simplify operational tasks, improve reliability, reduce manual effort, and assist with troubleshooting and monitoring across Azure environments.
- 
-## Areas Covered
+# Azure NSG Rule Automation
+Python-based automation tool for bulk creation and management of Azure Network Security Group (NSG) rules using Excel spreadsheets.
 
-### Automation
-- PowerShell automation
-- Python automation
-- Azure CLI integrations
-- Bulk configuration management
- 
-### Networking
-- Network Security Group (NSG) rule management
-- Network validation
-- Connectivity testing
- 
-### Monitoring & Operations
-- Health checks
-- Reporting tools
-- Operational diagnostics
-- Incident investigation support
- 
-### Azure Services
-- Azure Virtual Machines
-- Azure Monitor
-- Azure Automation Accounts
-- Azure Update Manager
-- Azure Arc
-- Log Analytics
- 
-## Repository Structure
-Projects are maintained in separate branches and may include:
-- Azure NSG Automation
-- Infrastructure Reporting
-- Monitoring Automation
-- Diagnostic Toolkits
-- Operational Runbooks
-- YAML Configurations
- 
-## Technologies Used
-- Azure
-- PowerShell
+
+
+## Overview
+This tool reads NSG rule definitions from an Excel workbook, validates the configuration, and applies the required changes using Azure CLI.
+
+The script supports both rule creation and updates, making it useful for large-scale network security management in Azure environments.
+
+
+
+## Features
+✅ Bulk NSG rule deployment
+✅ Excel-driven configuration
+✅ Create and update support
+✅ What-If (dry-run) mode
+✅ CSV activity logging
+✅ Multi-subscription support
+✅ Automatic validation
+✅ Optional NSG creation
+
+
+
+## Input Format
+Required columns:
+- NSGName
+- RuleName
+- Description
+- Direction
+- Priority
+- Protocol
+- SourceAddress
+- DestinationAddress
+- SourcePort
+- DestinationPort
+- Subscription
+- ResourceGroup
+- Action
+
+
+
+## Example Usage
+```bash
+python3 apply_nsg_rules.py \
+  --file Rules.xlsx
+```
+
+
+
+Validate only:
+```bash
+python3 apply_nsg_rules.py \
+  --file Rules.xlsx \
+  --what-if
+```
+
+Enable logging:
+```bash
+python3 apply_nsg_rules.py \
+  --file Rules.xlsx \
+  --log-file deployment_results.csv
+```
+
+Create missing NSGs:
+```bash
+python3 apply_nsg_rules.py \
+  --file Rules.xlsx \
+  --create-missing-nsgs
+```
+
+
+
+## Use Cases
+
+### Security Rule Standardization
+Apply consistent security policies across multiple environments.
+
+### Infrastructure Migration
+Recreate NSG configurations during cloud migrations.
+
+### Operational Automation
+Reduce manual Azure Portal administration.
+
+### Compliance Auditing
+Track and log all network security rule changes.
+
+## Technologies
 - Python
 - Azure CLI
-- ARM Templates
-- YAML
- 
+- Azure Networking
+- Azure NSG
+- OpenPyXL
+- Cloud Shell
+
+## Skills Demonstrated
+- Azure Networking
+- Infrastructure Automation
+- Python Development
+- Input Validation
+- Error Handling
+- Operational Tooling
+- Cloud Security
+
 ## Disclaimer
-All scripts published in this repository are generalized versions created for demonstration, learning, and automation purposes. Any organization-specific information, credentials, or sensitive configuration data has been removed.
- 
-## Future Roadmap
-- Terraform samples
-- Infrastructure as Code projects
-- Azure Monitor automation
-- SRE runbooks
-- Kubernetes labs
-- Platform engineering projects
+This repository contains a generalized implementation intended for automation demonstrations and operational use cases. Environment-specific information has been removed.
