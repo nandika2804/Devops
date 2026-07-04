@@ -1,60 +1,36 @@
-# Azure SRE Toolkit 
-A collection of Azure-focused automation tools, troubleshooting utilities, operational runbooks, and cloud engineering scripts developed from real-world DevOps and Site Reliability Engineering (SRE) scenarios.
+# Azure VM CPU Reporting Tool
+PowerShell automation script that generates CPU utilization reports for Azure Virtual Machines across multiple subscriptions.
  
-## Purpose 
-This repository contains solutions designed to simplify operational tasks, improve reliability, reduce manual effort, and assist with troubleshooting and monitoring across Azure environments.
+## Overview 
+This tool connects to Azure Monitor, retrieves CPU metrics for specified virtual machines, and generates an Excel report containing:
+- Virtual Machine Name
+- Subscription
+- Resource Group
+- Maximum CPU Utilization
+- Number of occurrences of peak utilization
  
-## Areas Covered
-
-### Automation
-- PowerShell automation
-- Python automation
-- Azure CLI integrations
-- Bulk configuration management
+The report can be used for:
+- Capacity planning
+- Performance investigations
+- VM rightsizing exercises
+- Resource optimization reviews
+- Operational reporting
  
-### Networking
-- Network Security Group (NSG) rule management
-- Network validation
-- Connectivity testing
+---
  
-### Monitoring & Operations
-- Health checks
-- Reporting tools
-- Operational diagnostics
-- Incident investigation support
+## Features
+✅ Multi-subscription support
+✅ Azure Monitor integration
+✅ Automated Excel report generation
+✅ Peak CPU utilization detection
+✅ Error handling and reporting
+✅ Bulk VM processing through Excel input
  
-### Azure Services
-- Azure Virtual Machines
-- Azure Monitor
-- Azure Automation Accounts
-- Azure Update Manager
-- Azure Arc
-- Log Analytics
+---
  
-## Repository Structure
-Projects are maintained in separate branches and may include:
-- Azure NSG Automation
-- Infrastructure Reporting
-- Monitoring Automation
-- Diagnostic Toolkits
-- Operational Runbooks
-- YAML Configurations
- 
-## Technologies Used
-- Azure
-- PowerShell
-- Python
-- Azure CLI
-- ARM Templates
-- YAML
- 
-## Disclaimer
-All scripts published in this repository are generalized versions created for demonstration, learning, and automation purposes. Any organization-specific information, credentials, or sensitive configuration data has been removed.
- 
-## Future Roadmap
-- Terraform samples
-- Infrastructure as Code projects
-- Azure Monitor automation
-- SRE runbooks
-- Kubernetes labs
-- Platform engineering projects
+## Prerequisites
+PowerShell Modules:
+```powershell
+Az.Compute
+Az.Monitor
+ImportExcel
