@@ -1,2 +1,2 @@
 VMName	Subscription	Resource Group	MaxCPUUtilization	MaxUtilizationHitCount
-VM01	Production	RG-Prod	95	2
+VM01   	Production	  RG-Prod	        95	               2 
