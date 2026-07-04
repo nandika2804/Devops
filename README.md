@@ -1,60 +1,121 @@
-# Azure SRE Toolkit 
-A collection of Azure-focused automation tools, troubleshooting utilities, operational runbooks, and cloud engineering scripts developed from real-world DevOps and Site Reliability Engineering (SRE) scenarios.
- 
-## Purpose 
-This repository contains solutions designed to simplify operational tasks, improve reliability, reduce manual effort, and assist with troubleshooting and monitoring across Azure environments.
- 
-## Areas Covered
+# Azure NSG Rule Export Tool
+PowerShell automation script that exports all custom Network Security Group (NSG) rules from a specified Azure NSG into a structured CSV report.
 
-### Automation
-- PowerShell automation
-- Python automation
-- Azure CLI integrations
-- Bulk configuration management
- 
-### Networking
-- Network Security Group (NSG) rule management
-- Network validation
-- Connectivity testing
- 
-### Monitoring & Operations
-- Health checks
-- Reporting tools
-- Operational diagnostics
-- Incident investigation support
- 
-### Azure Services
-- Azure Virtual Machines
-- Azure Monitor
-- Azure Automation Accounts
-- Azure Update Manager
-- Azure Arc
-- Log Analytics
- 
-## Repository Structure
-Projects are maintained in separate branches and may include:
-- Azure NSG Automation
-- Infrastructure Reporting
-- Monitoring Automation
-- Diagnostic Toolkits
-- Operational Runbooks
-- YAML Configurations
- 
-## Technologies Used
+
+
+## Overview
+This tool retrieves security rules from an Azure NSG and converts Azure-specific objects such as:
+- Address Prefix Lists
+- Port Range Collections
+- Application Security Groups (ASG)
+into human-readable values suitable for reporting, documentation, and compliance reviews.
+
+
+
+## Features
+✅ Export all NSG rules
+✅ Clean CSV reporting
+✅ Application Security Group (ASG) support
+✅ Multi-address support
+✅ Multi-port support
+✅ Read-only operation
+✅ Azure PowerShell integration
+
+
+
+## Requirements
+
+PowerShell Modules:
+```powershell
+Az.Accounts
+Az.Network
+```
+
+
+
+Install:
+```powershell
+Install-Module Az
+```
+
+
+
+## Parameters
+
+| Parameter | Description |
+
+|------------|-------------|
+| SubscriptionId | Azure subscription ID |
+| ResourceGroupName | Resource Group containing the NSG |
+| NSGName | Network Security Group name |
+| OutPath | Output CSV file |
+
+
+
+## Usage
+
+```powershell
+.\Export-AzureNSGRules.ps1 `
+    -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" `
+    -ResourceGroupName "RG-Network" `
+    -NSGName "NSG-Web" `
+    -OutPath ".\NSG-Rules.csv"
+```
+
+## Sample Output
+```text
+SubscriptionId
+ResourceGroup
+NSG
+RuleName
+Priority
+Direction
+Access
+Protocol
+Source
+SourcePort
+Destination
+DestinationPort
+```
+
+Example:
+```text
+Prod-Subscription
+RG-Network
+NSG-Web
+Allow-HTTPS
+100
+Inbound
+Allow
+Tcp
+Internet
+*
+10.0.1.10
+443
+```
+
+
+
+## Use Cases
+
+### Security Auditing
+Review allowed and denied traffic rules.
+
+### Compliance Reviews
+Generate evidence of configured network controls.
+
+### Documentation
+Export current NSG configurations into a shareable format.
+
+### Troubleshooting
+Quickly inspect active network security rules.
+
+## Technologies
 - Azure
+- Azure Networking
+- Network Security Groups
 - PowerShell
-- Python
-- Azure CLI
-- ARM Templates
-- YAML
- 
+- Az.Network
+
 ## Disclaimer
-All scripts published in this repository are generalized versions created for demonstration, learning, and automation purposes. Any organization-specific information, credentials, or sensitive configuration data has been removed.
- 
-## Future Roadmap
-- Terraform samples
-- Infrastructure as Code projects
-- Azure Monitor automation
-- SRE runbooks
-- Kubernetes labs
-- Platform engineering projects
+This project contains a generalized implementation intended for automation, reporting, and troubleshooting purposes. All environment-specific information has been removed.
