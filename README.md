@@ -34,3 +34,10 @@ PowerShell Modules:
 Az.Compute
 Az.Monitor
 ImportExcel
+
+---
+
+**## Usage**
+.\Get-VMCPUReport.ps1
+
+
