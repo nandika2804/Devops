@@ -37,7 +37,7 @@ ImportExcel
 
 ---
 
-**## Usage**
+## Usage
 .\Get-VMCPUReport.ps1
 
 
